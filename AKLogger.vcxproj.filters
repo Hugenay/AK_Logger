@@ -30,6 +30,9 @@
     <ClInclude Include="PressureSensor.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Visual Micro\.src_git.vsarduino.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Communication.cpp">
