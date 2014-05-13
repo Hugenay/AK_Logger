@@ -85,7 +85,7 @@ void loop()
 			msb = Wire.read(); 
 			lsb = Wire.read();
 		}
-                
+               
 	        
 		/*Serial.print("MSB: ");
 		Serial.println(msb);
