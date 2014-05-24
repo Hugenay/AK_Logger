@@ -10,6 +10,7 @@
 
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
+#define _VMDEBUG 1
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -19,27 +20,11 @@
 #define LAYOUT_US_ENGLISH
 #define __cplusplus
 #define __MK20DX256__
-#define TEENSYDUINO 117
-#define __inline__
-#define __asm__(x)
+#define TEENSYDUINO 118
 #define __extension__
-#define __ATTR_PURE__
-#define __ATTR_CONST__
-#define __inline__
-#define __asm__ 
-#define __volatile__
-
+#define  __attribute__(x)
 #define __builtin_va_list
-#define __builtin_va_start
-#define __builtin_va_end
-#define __DOXYGEN__
-#define __attribute__(x)
-#define NOINLINE __attribute__((noinline))
-#define prog_void
-#define PGM_VOID_P int
-            
-typedef unsigned char byte;
-extern "C" void __cxa_pure_virtual() {;}
+
 
 //
 //
@@ -48,5 +33,5 @@ void log2SD();
 void SelectChannel (int channel);
 
 #include "C:\Program Files (x86)\Arduino\hardware\teensy\cores\teensy3\arduino.h"
-#include "C:\Users\Laurin Laptop\AKLogger\Drucksensortest_SDVS\Drucksensortest_SDVS.ino"
+#include "D:\Dropbox\Akaflieg\AK_Logger\Drucksensortest_SDVS\Drucksensortest_SDVS.ino"
 #endif

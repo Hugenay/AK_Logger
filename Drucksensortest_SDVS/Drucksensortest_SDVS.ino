@@ -31,6 +31,7 @@ void setup()
 {
 	// Open serial communications
 	Serial.begin(115200);
+	Serial.println("Serial open");
 
 	//Mux pinout setup
 	pinMode(s0, OUTPUT); 
@@ -51,7 +52,7 @@ void setup()
 		Serial.println("Card failed, or not present");
 		// don't do anything more:
 		return;
-
+	
 	}
 
 	Wire.begin(I2C_MASTER, 0x00, I2C_PINS_18_19, I2C_PULLUP_EXT, I2C_RATE_400);
@@ -97,7 +98,7 @@ void loop()
 
 		} 
 
-		dataString = micros() + "\t" + dataString;
+		//dataString =  "\t" + dataString; // mircos() entfernt
 
 		Serial.println(dataString);
 
@@ -121,6 +122,7 @@ void loop()
 		LogFlagCpy = false;
 
 	}
+	
 }
 
 
