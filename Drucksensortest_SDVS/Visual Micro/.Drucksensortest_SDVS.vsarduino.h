@@ -34,4 +34,5 @@ void SelectChannel (int channel);
 
 #include "C:\Program Files (x86)\Arduino\hardware\teensy\cores\teensy3\arduino.h"
 #include "D:\Dropbox\Akaflieg\AK_Logger\Drucksensortest_SDVS\Drucksensortest_SDVS.ino"
+#include "D:\Dropbox\Akaflieg\AK_Logger\Drucksensortest_SDVS\resource.h"
 #endif

@@ -1,6 +1,9 @@
 
+
 #include <i2c_t3.h>
 #include <SD.h>
+
+
 
 
 #define PRESSURE_SENSOR_ADRESS 0x78   // = 0b1111000
@@ -73,6 +76,7 @@ void loop()
 	LogFlag = false;
 	interrupts();
 
+
 	if (SensorFlagCpy)
 	{
 
@@ -94,9 +98,11 @@ void loop()
 			rawPressure = (int)(msb << 8) | lsb;
 			//Pressure = (rawPressure - OUTMIN) / SENSIVITY; 
 
-			dataString = dataString + String(rawPressure) + "\t" ;
+			dataString += String(rawPressure) + "\n" ;
 
 		} 
+
+
 
 		//dataString =  "\t" + dataString; // mircos() entfernt
 
@@ -106,10 +112,10 @@ void loop()
 
 	}
 
-	if (LogFlagCpy)
+	if (LogFlagCpy && dataString.length()==512)
 	{
 
-		File dataFile = SD.open("data.txt", FILE_WRITE);
+		File dataFile = SD.open("data.txt", O_CREAT | O_APPEND | O_WRITE);
 
 		if (dataFile) {
 			dataFile.println(dataString);
