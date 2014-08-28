@@ -1,6 +1,9 @@
 
+
 #include <i2c_t3.h>
 #include <SD.h>
+
+
 
 
 #define PRESSURE_SENSOR_ADRESS 0x78   // = 0b1111000
@@ -31,6 +34,7 @@ void setup()
 {
 	// Open serial communications
 	Serial.begin(115200);
+	Serial.println("Serial open");
 
 	//Mux pinout setup
 	pinMode(s0, OUTPUT); 
@@ -51,7 +55,7 @@ void setup()
 		Serial.println("Card failed, or not present");
 		// don't do anything more:
 		return;
-
+	
 	}
 
 	Wire.begin(I2C_MASTER, 0x00, I2C_PINS_18_19, I2C_PULLUP_EXT, I2C_RATE_400);
@@ -71,6 +75,7 @@ void loop()
 	SensorFlag = false;
 	LogFlag = false;
 	interrupts();
+
 
 	if (SensorFlagCpy)
 	{
@@ -93,11 +98,13 @@ void loop()
 			rawPressure = (int)(msb << 8) | lsb;
 			//Pressure = (rawPressure - OUTMIN) / SENSIVITY; 
 
-			dataString = dataString + String(rawPressure) + "\t" ;
+			dataString += String(rawPressure) + "\n" ;
 
 		} 
 
-		dataString = micros() + "\t" + dataString;
+
+
+		//dataString =  "\t" + dataString; // mircos() entfernt
 
 		Serial.println(dataString);
 
@@ -105,10 +112,10 @@ void loop()
 
 	}
 
-	if (LogFlagCpy)
+	if (LogFlagCpy && dataString.length()==512)
 	{
 
-		File dataFile = SD.open("data.txt", FILE_WRITE);
+		File dataFile = SD.open("data.txt", O_CREAT | O_APPEND | O_WRITE);
 
 		if (dataFile) {
 			dataFile.println(dataString);
@@ -121,6 +128,7 @@ void loop()
 		LogFlagCpy = false;
 
 	}
+	
 }
 
 
